@@ -1,0 +1,8 @@
+bad_credentials: 无效的凭证。
+user_account_deleted: 您的帐号已被删除。
+user_account_disabled: 您的帐号已被禁止。
+login_mobile_is_required: 手机号不能为空。
+login_code_is_required: 验证码不能为空。
+login_code_is_used: 该验证码已被使用。
+login_type_mobile_not_support: 当前帐号不支持手机短信登录。
+login_type_password_not_support: 当前帐号不支持账号密码登录。

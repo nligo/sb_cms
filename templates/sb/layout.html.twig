@@ -1,0 +1,12 @@
+{% extends 'sb/base.html.twig' %}
+{% block body %}
+
+<div id="wrapper">
+    {% include "sb/topbar.html.twig" %}
+    <div id="page-wrapper">
+    {% include "sb/breadcrumb.html.twig" %}
+    {% block main %}
+    {% endblock %}
+    </div>
+</div>
+{% endblock %}

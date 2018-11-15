@@ -1,0 +1,7 @@
+{% extends 'sb/layout.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block main %}
+    <h1>站点设置:</h1>
+    {{ form(form) }}
+{% endblock %}

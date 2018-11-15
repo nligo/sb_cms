@@ -1,0 +1,11 @@
+user_identify_rule: 用户名必需字母、数字或符号（0-9A-Za-z.-_），长度 4-16 个字符。
+user_mobile_rule: 手机号为 11 个字符的纯数字。
+user_password_rule: 密码必需字母、数字或符号（0-9A-Za-z.-_），长度 6-16 个字符。
+user_password_not_match: 密码与确认密码不一致。
+question_content_image_url_required: 试题题干和试题图片不能同时为空。
+paper_exists_message: 保存失败，该地区已存在同名试卷，试卷 ID {{ paper_id }}。
+topic_img_url_required: 专题图片不能为空
+subject_name_exists_message: 科目名称已存在，请不要重复添加
+knowledge_name_exists_message: 知识点已存在，请不要重复添加
+teacher_name_rule: 账号必需字母、数字或符号（0-9A-Za-z.-_），长度 2-16 个字符。
+teacher_password_rule: 密码必需字母、数字或符号（0-9A-Za-z.-_），长度 6-15 个字符。
