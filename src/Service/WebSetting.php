@@ -3,20 +3,19 @@
  * Created by PhpStorm.
  * User: linpoo
  * Date: 2018/11/16
- * Time: 上午10:30
+ * Time: 上午10:30.
  */
 
 namespace App\Service;
-
 
 use Doctrine\ORM\EntityManagerInterface;
 
 class WebSetting
 {
     private $em;
-    
+
     private $obj;
-    
+
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->em = $entityManager;
@@ -27,7 +26,7 @@ class WebSetting
     {
         return $this->em->getRepository(\App\Entity\WebSetting::class)->findOneBy([]);
     }
-    
+
     public function getId(): ?int
     {
         return $this->obj->getId();
@@ -38,12 +37,10 @@ class WebSetting
         return $this->obj->getName();
     }
 
-
     public function getIcp(): ?string
     {
         return $this->obj->getIcp();
     }
-
 
     public function getContact(): ?string
     {
@@ -74,5 +71,4 @@ class WebSetting
     {
         return $this->obj->getUpdatedAt();
     }
-
 }
