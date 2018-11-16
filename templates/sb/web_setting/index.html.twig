@@ -1,7 +1,8 @@
 {% extends 'sb/layout.html.twig' %}
 
+{% block title %}站点设置{% endblock %}
+{% block nav_name %}站点设置{% endblock %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block main %}
-    <h1>站点设置:</h1>
     {{ form(form) }}
 {% endblock %}

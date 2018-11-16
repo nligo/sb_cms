@@ -6,85 +6,12 @@ app:
     choice_empty: 请选择
 
 entity:
-    types:
-        select: 选择题
-        write: 填空题
-        read: 阅读理解
-        listen: 听力题
-        compound: 综合题
-    region:
-        to_province: 关联省份
-    user:
-        role: 用户角色
-        identify: 用户名
-        mobile: 手机号
-        password: 登录密码
-        password_confirm: 确认密码
-        login_type: 登录方式
-        enabled: 帐户状态
-    model:
-        name: 题型名称
-        type: 试题类型
-        to_one: 选择题型
-    subject:
-        name: 科目名称
-        name_child: 知识点名称
-        parent: 上级知识点
-        to_one: 选择科目
-        to_many: 关联科目
-    knowledge:
-        to_many: 关联知识点
-    version:
-        name: 版本名称
-        to_one: 选择版本
-        to_many: 关联版本
-    complex:
-        name: 难度名称
-        to_one: 选择难度
-        to_many: 关联难度
-    grade:
-        name: 年级名称
-        to_one: 选择年级
-        to_many: 关联年级
-    textbook:
-        name: 分册名称
-        name_child: 章节名称
-        parent: 上级章节
-        to_many: 关联教材
-    question:
-        content: 试题题干
-        result: 答案解析
-        video_url: 视频解析
-        content_image_url: 试题题干图片
-        result_image_url: 答案解析图片
-        knowledge_count: 知识点数量
-    paper:
-        name: 试卷名称
-        enabled_at: 开放时间
-        region: 选择地区
-        title: 大题号
-        subtitle: 小题号
-        type:
-            name: 类型名称
-            to_one: 选择类型
-    topic:
-        title: 专题大标题
-        subtitle: 专题小标题
-        img_url: 专题图片
-    topic_video:
-        title: 视频标题
-        subtitle: 视频副标题
-        video_text: 视频文字
-        video_url: 视频地址
-    teacher:
-        real_name: '* 姓名'
-        name: '* 账号'
-        password: '* 密码'
-        password_confirm: '* 确认密码'
-        status: 状态
-        mobile: 手机号
-        email: 电子邮箱
-        region: 适用地区
-    teacher_paper:
-        status: 状态
-
+    webSetting:
+        name: 站点名称
+        icp: icp备案号
+        contact: 联系人
+        email: 邮箱
+        phone: 联系方式
+        description: 站点描述
+        created_at: 创建时间
+        updated_at: 更新时间

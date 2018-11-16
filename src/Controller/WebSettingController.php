@@ -20,7 +20,7 @@ class WebSettingController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $webSetting = $entityManager->getRepository(WebSetting::class)->findOneBy([]);
-        $webSetting = !empty($webSetting->getId()) ? $webSetting : new WebSetting();
+        $webSetting = !empty($webSetting) ? $webSetting : new WebSetting();
         $form = $this->createForm(WebSettingType::class, $webSetting);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
