@@ -44,7 +44,7 @@ class ArticleRepository extends ServiceEntityRepository
      /**
       * @return Category[] Returns an array of Category objects
       */
-    public function getAll()
+    public function getArticles()
     {
         return $this->createQueryBuilder('a')
             ->leftJoin('a.categories','c')
