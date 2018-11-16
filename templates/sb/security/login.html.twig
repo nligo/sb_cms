@@ -1,16 +1,16 @@
 {% extends 'sb/base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ web_setting.name ?? '' }}{% endblock %}
 
 {% block body %}
 
 <form method="post">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 15%">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title text-center">{{ web_setting.name ?? '' }} &nbsp;</h3>
                     </div>
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -18,21 +18,21 @@
                     <div class="panel-body">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" TYPE="text" value="{{ last_username }}" name="username" id="inputUsername" autofocus>
+                                    <input class="form-control" TYPE="text" value="{{ last_username }}" name="username" id="inputUsername" placeholder="用户名" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" type="password" name="password" id="inputPassword"  value="">
+                                    <input class="form-control" placeholder="密码" type="password" name="password" id="inputPassword"  value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        <input name="remember" type="checkbox" value="Remember Me">记住我
                                     </label>
                                 </div>
                                 <input type="hidden" name="_csrf_token"
                                        value="{{ csrf_token('authenticate') }}"
                                 >
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+                                <button class="btn btn-lg btn-success btn-block" type="submit">登录</button>
                             </fieldset>
                     </div>
                 </div>

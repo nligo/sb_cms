@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">{{ web_setting.name ?? '' }}</a>
+                <a class="navbar-brand" href="{{ path('sb.index') }}">{{ web_setting.name ?? '' }}</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -22,7 +22,7 @@
                         <li><a href="{{ path('sb.web_setting') }}"><i class="fa fa-gear fa-fw"></i> 设置</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{{ path('security_logout') }}"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+                        <li><a href="{{ path('security.logout') }}"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

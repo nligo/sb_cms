@@ -10,18 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/admin", name="sb_index")
+     * @Route("/admin", name="sb.index")
      */
     public function index()
     {
         return $this->render('sb/index.html.twig', [
             'controller_name' => 'IndexController',
         ]);
-    }
-
-    public function webSetting()
-    {
-       $webSetting = $this->getDoctrine()->getRepository(WebSetting::class)->findOneBy([]);
-       return $webSetting;
     }
 }

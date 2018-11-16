@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Test Application{% endblock %}</title>
+    <title>{% block title %}{{ web_setting.name ?? '' }}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('sb') }}
     {% endblock %}

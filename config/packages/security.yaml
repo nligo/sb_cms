@@ -20,7 +20,7 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
             logout:
-              path:   security_logout
+              path:   security.logout
             # activate different ways to authenticate
 
             # http_basic: true
