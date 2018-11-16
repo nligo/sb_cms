@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\FetchMode;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -36,15 +39,18 @@ class ArticleRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Article
+
+
+     /**
+      * @return Category[] Returns an array of Category objects
+      */
+    public function getAll()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->leftJoin('a.categories','c')
+            ->addSelect('c')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }
