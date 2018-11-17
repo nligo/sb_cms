@@ -21,7 +21,7 @@
     </form>
 </div>
 <div class="panel">
-<div class="panel-body">
+<div class="panel-body panel-default">
     <div  class="table-responsive">
         <table width="100%" class="table table-striped">
             <thead>
@@ -33,7 +33,7 @@
                 <th>{{ knp_pagination_sortable(pagination, '公开时间', 'pubicAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, '创建时间', 'createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, '更新时间', 'updatedAt') }}</th>
-                <th>操作</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -52,8 +52,21 @@
                     <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a href="{{ path('article.show', {'id': article.id}) }}">查看</a>
-                        <a href="{{ path('article.edit', {'id': article.id}) }}">编辑</a>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li> <a href="{{ path('article.show', {'id': article.id}) }}">查看</a>
+                                </li>
+                                <li><a href="{{ path('article.edit', {'id': article.id}) }}">编辑</a>
+                                </li>
+                                <li><a href="{{ path('article.edit', {'id': article.id}) }}">删除</a>
+                                </li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
             {% endfor %}
