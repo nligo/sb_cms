@@ -3,42 +3,65 @@
 {% block title %}文章列表{% endblock %}
 {% block nav_name %}文章列表{% endblock %}
 {% block main %}
-    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-        <thead>
-        <tr>
-            <th>文章ID</th>
-            <th>标题</th>
-            <th>所属栏目</th>
-            <th>是否公开</th>
-            <th>公开时间</th>
-            <th>创建时间</th>
-            <th>更新时间</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-        <tr class="odd gradeX">
-            <tr>
-                <td>{{ article.id }}</td>
-            <td>{{ article.title }}</td>
-            <td>
-                {% for category in article.categories %}
-                <a href="#"><span>{{ category.name ?? '' }}</span></a>
-                {% endfor %}
 
-            </td>
-                <td>{{ article.isShow ? 'Yes' : 'No' }}</td>
-                 <td>{{ article.pulicAt ? article.pulicAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('article.show', {'id': article.id}) }}">查看</a>
-                    <a href="{{ path('article.edit', {'id': article.id}) }}">编辑</a>
-                </td>
+<div class="searchbox panel-body">
+    <div class="search_btbox"><span>快捷搜索</span></div>
+    <form class="form-inline"  method="get" action="">
+        <div class="form-group">
+            <select id="category_id" name="category_id" class="form-control" data-placeholder="栏目/不限">
+                <option value="">栏目/不限</option>
+                {% for category in categories %}
+                    <option value="{{  category.id ?? 0 }}" {% if search.category_id is defined and search.category_id  ==  category.id  %} selected {% endif %}>{{  category.name ?? '' }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary ml-1">搜索</button>
+        </div>
+    </form>
+</div>
+<div class="panel">
+<div class="panel-body">
+    <div  class="table-responsive">
+        <table width="100%" class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, '文章ID', 'id') }}</th>
+                <th>{% if pagination.isSorted('title') %} class="sorted"{% endif %}{{ knp_pagination_sortable(pagination, '标题', 'title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '所属栏目', 'categories') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '是否公开', 'isShow') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '公开时间', 'pubicAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '创建时间', 'createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '更新时间', 'updatedAt') }}</th>
+                <th>操作</th>
             </tr>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for article in pagination %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>
+                        {% for category in article.categories %}
+                            <a href="#"><span>{{ category.name ?? '' }}</span></a>
+                        {% endfor %}
+
+                    </td>
+                    <td>{{ article.isShow ? 'Yes' : 'No' }}</td>
+                    <td>{{ article.pulicAt ? article.pulicAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('article.show', {'id': article.id}) }}">查看</a>
+                        <a href="{{ path('article.edit', {'id': article.id}) }}">编辑</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+</div>
 {% endblock %}

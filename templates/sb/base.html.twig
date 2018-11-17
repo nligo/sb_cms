@@ -8,11 +8,15 @@
     {% endblock %}
 </head>
 <body>
+<div id="wrapper">
+    {% include "sb/topbar.html.twig" %}
 {% block body %}
 {% endblock %}
+</div>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('sb') }}
 {% endblock %}
+
 </body>
 </html>

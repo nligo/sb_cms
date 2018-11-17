@@ -1,0 +1,49 @@
+{% if pageCount > 1 %}
+    <nav data-step="8" data-intro="翻页查看更多！">
+        <ul class="pagination">
+            <li>
+                <a>共（{{ totalCount }}）条数据</a>
+
+            </li>
+
+            {% if first is defined and current != first %}
+                <li class="first">
+                    <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">首页</a>
+                </li>
+            {% endif %}
+
+            {% if previous is defined %}
+                <li class="previous">
+                    <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">上一页</a>
+                </li>
+            {% endif %}
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): page})) }}" class="active">{{ page }}</a>
+                    </li>
+                {% else %}
+                    <li class="active"><a>{{ page }}</a></li>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if next is defined %}
+                <li class="next">
+                    <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">下一页</a>
+                </li>
+            {% endif %}
+
+            {% if last is defined and current != last %}
+                <li class="last">
+                    <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">尾页</a>
+                </li>
+            {% endif %}
+            <li>
+                <a>共（{{  pageCount }}）页</a>
+
+            </li>
+        </ul>
+    </nav>
+{% endif %}

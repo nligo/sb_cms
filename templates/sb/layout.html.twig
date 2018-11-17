@@ -1,17 +1,18 @@
 {% extends 'sb/base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-    {% include "sb/topbar.html.twig" %}
     <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">{% block nav_name %}控制面板{% endblock %}</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">{% block nav_name %}控制面板{% endblock %}</h1>
+                </div>
+                <div class="col-lg-12">
+                    {% block main %}
+                    {% endblock %}
+                </div>
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-    {% block main %}
-    {% endblock %}
     </div>
-</div>
+
 {% endblock %}

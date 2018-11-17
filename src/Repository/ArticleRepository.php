@@ -44,13 +44,32 @@ class ArticleRepository extends ServiceEntityRepository
      /**
       * @return Category[] Returns an array of Category objects
       */
-    public function getArticles()
+    public function getArticles($condition = [])
     {
-        return $this->createQueryBuilder('a')
+
+        $qb = $this->createQueryBuilder('a')
             ->leftJoin('a.categories','c')
             ->addSelect('c')
+        ;
+        return $this->_getWhere($qb,$condition)
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    private function _getWhere($qb,array $condition = [])
+    {
+        if(isset($condition['category_id']) && !empty($condition['category_id']))
+        {
+            $qb->andWhere('c.id = :cId')->setParameter('cId',$condition['category_id']);
+        }
+
+        if(isset($condition['title']) && !empty($condition['title']))
+        {
+            $qb->andWhere('a.title LIKE :title')
+                ->setParameter('title', '%"'.$condition['title'].'"%');
+        }
+
+        return $qb;
     }
 }
