@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+{% extends 'sb/layout.html.twig' %}
 
-<title>New Article</title>
-
-{% block body %}
+{% block title %}发布文章{% endblock %}
+{% block nav_name %}发布文章{% endblock %}
+{% block main %}
     <h1>Create new Article</h1>
-
-    {{ include('article/_form.html.twig') }}
-
-    <a href="{{ path('article.index') }}">back to list</a>
+    {{ include('sb/article/_form.html.twig') }}
+    {#<a href="{{ path('article.index') }}">back to list</a>#}
 {% endblock %}

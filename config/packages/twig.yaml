@@ -5,3 +5,5 @@ twig:
     globals:
       # the value is the service's id
       web_setting: '@App\Service\WebSetting'
+    form_themes: ['my_form.html.twig']
+
