@@ -15,3 +15,12 @@ entity:
         description: 站点描述
         created_at: 创建时间
         updated_at: 更新时间
+article.title: 标题
+article.description: 摘要
+article.keyword: 关键字
+article.contents: 内容
+article.pulic_at: 开放时间
+article.created_at: 创建时间
+article.is_show: 是否展示
+article.updated_at: 更新时间
+article.categories: 所属栏目

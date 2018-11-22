@@ -3,7 +3,10 @@
 {% block title %}发布文章{% endblock %}
 {% block nav_name %}发布文章{% endblock %}
 {% block main %}
-    <h1>Create new Article</h1>
     {{ include('sb/article/_form.html.twig') }}
     {#<a href="{{ path('article.index') }}">back to list</a>#}
+{% endblock %}
+
+
+{% block js %}
 {% endblock %}

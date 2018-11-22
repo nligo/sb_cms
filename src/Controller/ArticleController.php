@@ -28,7 +28,7 @@ class ArticleController extends AbstractController
         $pagination = $paginator->paginate(
             $articles,
             $search['page'] ?? 1,
-            1
+            10
         );
         return $this->render('sb/article/index.html.twig', [
             'pagination' => $pagination,

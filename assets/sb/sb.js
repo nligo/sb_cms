@@ -1,3 +1,7 @@
+global.$ = require('jquery');
+global.Editor = require('tui-editor');
+
+
 require('codemirror/lib/codemirror.css') // codemirror
 require('tui-editor/dist/tui-editor.css'); // editor ui
 require('tui-editor/dist/tui-editor-contents.css'); // editor content
@@ -19,14 +23,6 @@ require('../sb/js/metisMenu.js');
 require('../sb/js/morris.js');
 require('../sb/js/sb-admin-2.js');
 require( '../sb/js/jquery-2.1.4.js' );
-
-var Editor = require('tui-editor');
-var editor = new Editor({
-    el: document.querySelector('#article_contents'),
-    initialEditType: 'markdown',
-    previewStyle: 'vertical',
-    height: '300px'
-});
 
 
 
