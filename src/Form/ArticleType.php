@@ -10,7 +10,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ArticleType extends AbstractType
@@ -21,7 +25,9 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('keyword')
-            ->add('contents')
+            ->add('contents',TextareaType::class,[
+                'attr' => ['class' => 'form-control tui-editor'],
+            ])
             ->add('pulic_at')
             ->add('is_show')
             ->add('created_at')
@@ -41,6 +47,17 @@ class ArticleType extends AbstractType
             ])
 
             ->add('save',SubmitType::class)
+            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+                $article = $event->getData();
+                $request = Request::createFromGlobals();
+                $contents = $request->request->get('tui-editor');
+                if (!$article) {
+                    return;
+                }
+                $article['contents'] = $contents;
+                $event->setData($article);
+            })
+            ->getForm();
         ;
     }
 
