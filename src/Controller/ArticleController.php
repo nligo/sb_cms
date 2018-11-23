@@ -38,7 +38,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="article.new", methods="GET|POST")
+     * @Route("/new", name="sb.article.new", methods="GET|POST")
      */
     public function new(Request $request): Response
     {
@@ -61,7 +61,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name="article.show", methods="GET")
+     * @Route("/{id}/show", name="sb.article.show", methods="GET")
      */
     public function show(Article $article): Response
     {
@@ -69,7 +69,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="article.edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="sb.article.edit", methods="GET|POST")
      */
     public function edit(Request $request, Article $article): Response
     {
@@ -89,7 +89,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="article.delete", methods="DELETE")
+     * @Route("/{id}/delete", name="sb.article.delete", methods="DELETE")
      */
     public function delete(Request $request, Article $article): Response
     {
