@@ -24,3 +24,4 @@ article.created_at: 创建时间
 article.is_show: 是否展示
 article.updated_at: 更新时间
 article.categories: 所属栏目
+article.save: 保存文章

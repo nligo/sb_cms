@@ -1,11 +1,4 @@
 global.$ = require('jquery');
-global.Editor = require('tui-editor');
-
-
-require('codemirror/lib/codemirror.css') // codemirror
-require('tui-editor/dist/tui-editor.css'); // editor ui
-require('tui-editor/dist/tui-editor-contents.css'); // editor content
-require('highlight.js/styles/github.css'); // code block highlight
 
 /*
  * Welcome to your app's main JavaScript file!

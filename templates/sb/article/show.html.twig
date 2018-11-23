@@ -1,54 +1,18 @@
-<!DOCTYPE html>
+{% extends 'sb/layout.html.twig' %}
 
-<title>Article</title>
+{% block title %}{{ info.title ?? '' }}{% endblock %}
+{% block nav_name %}{{ info.title ?? '' }}{% endblock %}
+{% block main %}
+    <div class="panel-body">
+        {% autoescape false %}
+            {{ info.contents ?? ''  }}
+        {% endautoescape %}
 
-{% block body %}
-    <h1>Article</h1>
+        <p class="text-right">公开时间：{{ (info.pubicAt ?? '') |date("Y-m-d H:i:s") }}</p>
+        <p class="text-right">创建时间：{{ (info.createdAt ?? '') |date("Y-m-d H:i:s") }}</p>
+        <p class="text-right">上次更新时间：{{ (info.updatedAt ?? '') |date("Y-m-d H:i:s") }}</p>
+    </div>
+{% endblock %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ article.description }}</td>
-            </tr>
-            <tr>
-                <th>Keyword</th>
-                <td>{{ article.keyword }}</td>
-            </tr>
-            <tr>
-                <th>Contents</th>
-                <td>{{ article.contents }}</td>
-            </tr>
-            <tr>
-                <th>Pulic_at</th>
-                <td>{{ article.pulicAt ? article.pulicAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Is_show</th>
-                <td>{{ article.isShow ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Updated_at</th>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('article_index') }}">back to list</a>
-
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+{% block js %}
 {% endblock %}

@@ -1,0 +1,8 @@
+fos_ck_editor:
+  configs:
+    my_config:
+      extraPlugins: "markdown"
+  plugins:
+    markdown:
+      path:     "/markdown/" # with trailing slash
+      filename: "plugin.js"

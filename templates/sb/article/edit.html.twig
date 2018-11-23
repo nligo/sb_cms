@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+{% extends 'sb/layout.html.twig' %}
 
-<title>Edit Article</title>
+{% block title %}{{ article.title ?? ''  }}{% endblock %}
+{% block nav_name %}{{ article.title ?? '' }}{% endblock %}
+{% block main %}
+    {{ include('sb/article/_form.html.twig') }}
+    {{ include('sb/article/_delete_form.html.twig') }}
+{% endblock %}
 
-{% block body %}
-    <h1>Edit Article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('article.index') }}">back to list</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+{% block js %}
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Article;
 use App\Entity\Category;
 use Doctrine\ORM\EntityRepository;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -35,8 +36,9 @@ class ArticleType extends AbstractType
             ->add('keyword',TextType::class,[
                 'label' => 'article.keyword',
             ])
-            ->add('contents',TextareaType::class,[
+            ->add('contents',CKEditorType::class,[
                 'label' => 'article.contents',
+                'config' => ['my_config'],
                 'attr' => ['class' => 'tui-editor'],
             ])
             ->add('pulic_at',DateTimeType::class,[
@@ -72,16 +74,6 @@ class ArticleType extends AbstractType
                     'class' => 'btn btn-primary'
                 ],
             ])
-            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-                $article = $event->getData();
-                $request = Request::createFromGlobals();
-                $contents = $request->request->get('tui-editor');
-                if (!$article) {
-                    return;
-                }
-                $article['contents'] = $contents;
-                $event->setData($article);
-            })
             ->getForm();
         ;
     }

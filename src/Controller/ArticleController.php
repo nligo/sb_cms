@@ -51,7 +51,7 @@ class ArticleController extends AbstractController
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('article.index');
+            return $this->redirectToRoute('sb.article.index');
         }
 
         return $this->render('sb/article/new.html.twig', [
@@ -61,11 +61,11 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article.show", methods="GET")
+     * @Route("/{id}/show", name="article.show", methods="GET")
      */
     public function show(Article $article): Response
     {
-        return $this->render('sb/article/show.html.twig', ['article' => $article]);
+        return $this->render('sb/article/show.html.twig', ['info' => $article]);
     }
 
     /**
@@ -79,7 +79,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article.index', ['id' => $article->getId()]);
+            return $this->redirectToRoute('sb.article.index', ['id' => $article->getId()]);
         }
 
         return $this->render('sb/article/edit.html.twig', [
@@ -89,7 +89,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article.delete", methods="DELETE")
+     * @Route("/{id}/delete", name="article.delete", methods="DELETE")
      */
     public function delete(Request $request, Article $article): Response
     {
@@ -99,6 +99,6 @@ class ArticleController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('article.index');
+        return $this->redirectToRoute('sb.article.index');
     }
 }
