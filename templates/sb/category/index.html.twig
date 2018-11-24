@@ -1,0 +1,66 @@
+{% extends 'sb/layout.html.twig' %}
+
+{% block title %}栏目列表{% endblock %}
+{% block nav_name %}栏目列表{% endblock %}
+{% block main %}
+
+<div class="searchbox panel-body">
+    <div class="search_btbox"><span>快捷搜索</span></div>
+    <form class="form-inline"  method="get" action="">
+        {#<div class="form-group">#}
+            {#<select id="category_id" name="category_id" class="form-control" data-placeholder="栏目/不限">#}
+                {#<option value="">栏目/不限</option>#}
+                {#{% for category in categories %}#}
+                    {#<option value="{{  category.id ?? 0 }}" {% if search.category_id is defined and search.category_id  ==  category.id  %} selected {% endif %}>{{  category.name ?? '' }}</option>#}
+                {#{% endfor %}#}
+            {#</select>#}
+        {#</div>#}
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary ml-1">搜索</button>
+        </div>
+    </form>
+</div>
+<div class="panel">
+<div class="panel-body panel-default">
+    <div  class="table-responsive">
+        <table width="100%" class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, '栏目ID', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '名称', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '是否公开', 'isPublic') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '创建时间', 'createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, '更新时间', 'updatedAt') }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in pagination %}
+                <tr>
+                    <td>{{ category.id ?? '' }}</td>
+                    <td>{{ category.name ?? '' }}</td>
+                    <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="{{ path('sb.category_edit', {'id': category.id}) }}">编辑</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

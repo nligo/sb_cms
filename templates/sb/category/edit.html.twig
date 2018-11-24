@@ -1,0 +1,12 @@
+{% extends 'sb/layout.html.twig' %}
+
+{% block title %}{{ category.name ?? ''  }}{% endblock %}
+{% block nav_name %}{{ category.name ?? '' }}{% endblock %}
+{% block main %}
+    {{ include('sb/category/_form.html.twig') }}
+    {{ include('sb/category/_delete_form.html.twig') }}
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
