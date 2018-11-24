@@ -6,10 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
+    const ON_PRE_CREATED = 'pre_created'; // 创建事件名称
+    const ON_PRE_UPDATED = 'pre_updated'; // 更新事件名称
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,34 +22,53 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=50,name="username")
      */
     private $username;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=50,name="phone")
      */
-    private $roles = [];
+    private $phone;
 
     /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255,name="password")
      */
     private $password;
 
-    public function getId(): ?int
+    /**
+     * @ORM\Column(type="string", length=50,name="email")
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="boolean",name="is_active")
+     */
+    private $isActive;
+
+    /**
+     * @ORM\Column(type="datetime",name="created_at",nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime",name="updated_at",nullable=true)
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
+
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
-        return (string) $this->username;
+        return $this->username;
     }
 
     public function setUsername(string $username): self
@@ -55,31 +78,24 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function getPassword(): ?string
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->password;
     }
 
-    public function setRoles(array $roles): self
+    public function getRoles()
     {
-        $this->roles = $roles;
-
-        return $this;
+        return array('ROLE_USER', 'ROLE_API');
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
+    public function getSalt()
     {
-        return (string) $this->password;
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 
     public function setPassword(string $password): self
@@ -89,20 +105,67 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
+    public function getEmail(): ?string
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->isActive = $is_active;
+
+        return $this;
     }
 
     /**
-     * @see UserInterface
+     * @param mixed $phone
      */
-    public function eraseCredentials()
+    public function setPhone($phone): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

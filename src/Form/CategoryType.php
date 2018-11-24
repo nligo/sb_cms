@@ -15,8 +15,6 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('is_public')
-            ->add('created_at')
-            ->add('updated_at')
             ->add('save',SubmitType::class,[
                 'label' => 'article.save',
                 'attr' => [

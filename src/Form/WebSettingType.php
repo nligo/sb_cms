@@ -19,8 +19,6 @@ class WebSettingType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('description')
-            ->add('created_at')
-            ->add('updated_at')
             ->add('submit',SubmitType::class)
         ;
     }

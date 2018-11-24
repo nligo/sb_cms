@@ -45,12 +45,6 @@ class ArticleType extends AbstractType
                 'label' => 'article.is_show',
                 'attr' => ['class' => 'checkbox']
             ])
-            ->add('created_at',DateTimeType::class,[
-                'label' => 'article.created_at',
-            ])
-            ->add('updated_at',DateTimeType::class,[
-                'label' => 'article.updated_at',
-            ])
             ->add('categories', EntityType::class, [
                 'label' => 'article.categories',
                 'attr' => array('multiple' => 'multiple'),

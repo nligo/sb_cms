@@ -21,6 +21,8 @@ class UserFixture extends Fixture
         $user
             ->setUsername('admin')
             ->setPassword($this->passwordEncoder->encodePassword($user,'123456'));
+        $user->setPhone('13484875171');
+        $user->setEmail('13484875171');
         $manager->persist($user);
         $manager->flush();
     }
