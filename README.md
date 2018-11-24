@@ -1,4 +1,6 @@
-# 如何安装
+# SB CMS
+
+## 如何安装？
 
 ```
 $ git clone https://github.com/nligo/sb_cms.git
