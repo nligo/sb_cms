@@ -1,20 +1,10 @@
-app:
-    sort: 排序顺序
-    submit: 保存
-    save_and_continue: 保存并继续
-    choice_all: 全部
-    choice_empty: 请选择
 
-entity:
-    webSetting:
-        name: 站点名称
-        icp: icp备案号
-        contact: 联系人
-        email: 邮箱
-        phone: 联系方式
-        description: 站点描述
-        created_at: 创建时间
-        updated_at: 更新时间
+sort: 排序顺序
+save: 保存
+save_and_continue: 保存并继续
+choice_all: 全部
+choice_empty: 请选择
+search: 搜索
 article.title: 标题
 article.description: 摘要
 article.keyword: 关键字
@@ -25,3 +15,14 @@ article.is_show: 是否展示
 article.updated_at: 更新时间
 article.categories: 所属栏目
 article.save: 保存文章
+
+app.createdAt: 创建时间
+app.updatedAt: 更新时间
+app.isPublic: 是否公开
+app.isActive: 激活状态
+app.username: 手机号
+app.email: 手机号
+app.phone: 手机号
+app.password: 密码
+app.confirmPassword: 确认密码
+app.save: 保存

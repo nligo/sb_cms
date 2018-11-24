@@ -1,0 +1,12 @@
+{% extends 'sb/layout.html.twig' %}
+
+{% block title %}{{ user.username ?? ''  }}{% endblock %}
+{% block nav_name %}{{ user.username ?? '' }}{% endblock %}
+{% block main %}
+    {{ include('sb/user/_form.html.twig') }}
+    {{ include('sb/user/_delete_form.html.twig') }}
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}

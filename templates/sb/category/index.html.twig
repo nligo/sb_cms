@@ -1,7 +1,7 @@
 {% extends 'sb/layout.html.twig' %}
 
-{% block title %}栏目列表{% endblock %}
-{% block nav_name %}栏目列表{% endblock %}
+{% block title %}Categories{% endblock %}
+{% block nav_name %}Categories{% endblock %}
 {% block main %}
 
 <div class="searchbox panel-body">
@@ -16,7 +16,7 @@
             {#</select>#}
         {#</div>#}
         <div class="form-group">
-        <button type="submit" class="btn btn-primary ml-1">搜索</button>
+        <button type="submit" class="btn btn-primary ml-1">search_btbox</button>
         </div>
     </form>
 </div>
@@ -26,11 +26,11 @@
         <table width="100%" class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, '栏目ID', 'id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '名称', 'name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '是否公开', 'isPublic') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '创建时间', 'createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '更新时间', 'updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'IsPublic', 'isPublic') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'CreatedAt', 'createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'UpdatedAt', 'updatedAt') }}</th>
                 <th></th>
             </tr>
             </thead>
@@ -45,11 +45,11 @@
 
                         <div class="btn-group">
                             <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                操作
+                                Action
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="{{ path('sb.category_edit', {'id': category.id}) }}">编辑</a>
+                                <li><a href="{{ path('sb.category_edit', {'id': category.id}) }}">Edit</a>
                                 </li>
                             </ul>
                         </div>

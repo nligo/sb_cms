@@ -1,0 +1,69 @@
+{% extends 'sb/layout.html.twig' %}
+
+{% block title %}Managers{% endblock %}
+{% block nav_name %}Managers{% endblock %}
+{% block main %}
+
+<div class="searchbox panel-body">
+    <div class="search_btbox"><span>快捷搜索</span></div>
+    <form class="form-inline"  method="get" action="">
+        {#<div class="form-group">#}
+            {#<select id="user_id" name="user_id" class="form-control" data-placeholder="栏目/不限">#}
+                {#<option value="">栏目/不限</option>#}
+                {#{% for user in categories %}#}
+                    {#<option value="{{  user.id ?? 0 }}" {% if search.user_id is defined and search.user_id  ==  user.id  %} selected {% endif %}>{{  user.name ?? '' }}</option>#}
+                {#{% endfor %}#}
+            {#</select>#}
+        {#</div>#}
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary ml-1">search</button>
+        </div>
+    </form>
+</div>
+<div class="panel">
+<div class="panel-body panel-default">
+    <div  class="t">
+        <table width="100%" class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'user.id', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'app.username', 'username') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'app.phone', 'phone') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'app.isActive', 'isActive') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'app.createdAt', 'createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'app.updatedAt', 'updatedAt') }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in pagination %}
+                <tr>
+                    <td>{{ user.id ?? '' }}</td>
+                    <td>{{ user.username ?? '' }}</td>
+                    <td>{{ user.phone ?? '' }}</td>
+                    <td>{{ user.isActive ? "Y" : "N" }}</td>
+                    <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Action
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="{{ path('sb.user_edit', {'id': user.id}) }}">Edit</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

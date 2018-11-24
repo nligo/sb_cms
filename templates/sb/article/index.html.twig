@@ -1,22 +1,22 @@
 {% extends 'sb/layout.html.twig' %}
 
-{% block title %}文章列表{% endblock %}
-{% block nav_name %}文章列表{% endblock %}
+{% block title %}Articles{% endblock %}
+{% block nav_name %}Articles{% endblock %}
 {% block main %}
 
 <div class="searchbox panel-body">
     <div class="search_btbox"><span>快捷搜索</span></div>
     <form class="form-inline"  method="get" action="">
         <div class="form-group">
-            <select id="category_id" name="category_id" class="form-control" data-placeholder="栏目/不限">
-                <option value="">栏目/不限</option>
+            <select id="category_id" name="category_id" class="form-control" data-placeholder="category/all">
+                <option value="">category/all</option>
                 {% for category in categories %}
                     <option value="{{  category.id ?? 0 }}" {% if search.category_id is defined and search.category_id  ==  category.id  %} selected {% endif %}>{{  category.name ?? '' }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
-        <button type="submit" class="btn btn-primary ml-1">搜索</button>
+        <button type="submit" class="btn btn-primary ml-1">search</button>
         </div>
     </form>
 </div>
@@ -26,13 +26,13 @@
         <table width="100%" class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, '文章ID', 'id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '标题', 'title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '所属栏目', 'categories') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '是否公开', 'isShow') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '公开时间', 'pubicAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '创建时间', 'createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, '更新时间', 'updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Title', 'title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Categories', 'categories') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'isShow', 'isShow') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'PubicAt', 'pubicAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'CreatedAt', 'createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'UpdatedAt', 'updatedAt') }}</th>
                 <th></th>
             </tr>
             </thead>
@@ -55,13 +55,13 @@
 
                         <div class="btn-group">
                             <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                操作
+                                Action
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <li> <a href="{{ path('sb.article.show', {'id': article.id}) }}">查看</a>
+                                <li> <a href="{{ path('sb.article.show', {'id': article.id}) }}">Show</a>
                                 </li>
-                                <li><a href="{{ path('sb.article.edit', {'id': article.id}) }}">编辑</a>
+                                <li><a href="{{ path('sb.article.edit', {'id': article.id}) }}">Edit</a>
                                 </li>
                             </ul>
                         </div>
