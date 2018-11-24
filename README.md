@@ -39,12 +39,6 @@ $ php bin/console doctrine:fixtures:load
 密码：123456
 ```
 
-#### 5、安装资源
 
-```
-$ yarn install // 或 npm install
-```
+#### 访问 http://yourdomain.com/admin
 
-```
-访问 http://yourdomain.com/admin
-```
